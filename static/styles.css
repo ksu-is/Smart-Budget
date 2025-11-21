@@ -1,0 +1,66 @@
+:root{
+  --bg: #ffffff;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --accent: #1e90ff;
+  --success: #00c865;
+  --danger: #c0392b;
+  --glass: rgba(0,0,0,0.04);
+}
+
+/* Layout */
+header { margin-bottom: 1rem; display:flex; align-items:center; gap:1rem; }
+.site-title { font-weight:700; letter-spacing: -0.5px; }
+.grid-2 { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+.grid-3 { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr 1fr; }
+@media (max-width: 900px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+.card { padding: 1rem; border-radius: 12px; background: var(--card);
+        box-shadow: 0 6px 20px var(--glass); }
+
+/* Summary pills */
+.summary-cards { display:flex; gap:.5rem; align-items:center; margin-bottom:.75rem; flex-wrap:wrap }
+.pill { display:inline-flex; flex-direction:column; gap:.25rem; padding:.75rem 1rem; border-radius:12px; min-width:110px }
+.pill strong{ font-size:1.05rem }
+.pill.income { background: rgba(0, 200, 100, 0.08); color:var(--success); }
+.pill.expense { background: rgba(220, 20, 60, 0.06); color:var(--danger); }
+.pill.net { background: rgba(30, 144, 255, 0.06); color:var(--accent); }
+
+.muted { color:var(--muted); font-size: .95rem; }
+
+.table-wrapper { overflow-x: auto; }
+table td, table th { white-space: nowrap; padding:.45rem .6rem; }
+table thead th { text-align:left; font-weight:600; border-bottom:1px solid rgba(0,0,0,0.06) }
+table tbody tr:nth-child(odd) { background: rgba(0,0,0,0.01) }
+
+.row { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+
+.flash-area { margin-bottom: .5rem; }
+.flash { padding: .5rem .75rem; border-radius: 8px; }
+.flash.ok { background: rgba(0,200,100,.12); }
+.flash.error { background: rgba(220,20,60,.12); }
+
+button.danger { background: var(--danger); color:white; border: none; padding:.5rem .75rem; border-radius:8px }
+
+/* Charts */
+.chart-card { min-height:200px; display:flex; flex-direction:column }
+
+/* Chart wrapper controls the visual height of canvas — canvas set to fill wrapper */
+.chart-wrapper { height: 240px; min-height: 160px; max-height: 480px; position: relative; }
+.chart-wrapper canvas { width: 100% !important; height: 100% !important; display:block }
+
+/* Slightly larger charts on wide screens */
+@media (min-width: 1200px) {
+  .chart-wrapper { height: 300px; }
+}
+
+@media (max-width: 600px) {
+  .chart-wrapper { height: 220px; }
+}
+
+.button-outline { border: 1px solid currentColor; padding: .5rem .8rem; border-radius: 8px; text-decoration: none; background:transparent }
+
+/* Small utility */
+.muted.small{ font-size:.85rem; opacity:.9 }

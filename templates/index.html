@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="grid-2">
+  <div>
+    <h2>Add Transaction</h2>
+  <form id="addForm" action="{{ url_for('add') }}" method="POST" class="card">
+      <label>Date
+        <input type="date" name="date" required value="{{ today }}">
+      </label>
+
+      <label>Description
+        <input type="text" name="description" placeholder="e.g., Salary / Groceries" />
+      </label>
+
+      <label>Category
+        <input type="text" name="category" placeholder="e.g., Food, Rent, Salary" />
+      </label>
+
+      <div class="row">
+        <label>
+          <input type="radio" name="type" value="income" required>
+          Income
+        </label>
+        <label>
+          <input type="radio" name="type" value="expense" required>
+          Expense
+        </label>
+      </div>
+
+      <label>Amount
+        <input type="number" name="amount" step="0.01" min="0" placeholder="0.00" required />
+      </label>
+
+      <button type="submit">Add</button>
+    </form>
+
+    <h3>Import / Export</h3>
+    <form action="{{ url_for('import_csv') }}" method="POST" enctype="multipart/form-data" class="row">
+      <input type="file" name="file" accept=".csv" />
+      <button type="submit">Import CSV</button>
+      <a class="button-outline" href="{{ url_for('export_csv') }}">Export CSV</a>
+    </form>
+  </div>
+
+  <div>
+    <h2>Summary</h2>
+    <div class="summary-cards">
+      <div class="pill income">Income<br><strong>${{ '%.2f'|format(insights.total_income) }}</strong></div>
+      <div class="pill expense">Expense<br><strong>${{ '%.2f'|format(insights.total_expense) }}</strong></div>
+      <div class="pill net">Net<br><strong>${{ '%.2f'|format(insights.net) }}</strong></div>
+    </div>
+
+    <div class="tips card">
+      <h3>AI Insights</h3>
+      <ul>
+        {% for t in insights.tips %}
+          <li>{{ t }}</li>
+        {% endfor %}
+      </ul>
+      <p class="muted">
+        Forecasted net next month: <strong>${{ '%.2f'|format(insights.forecast_next_month_net or 0) }}</strong><br>
+        Avg monthly burn (last 3 mo): <strong>${{ '%.2f'|format(insights.avg_burn_rate or 0) }}</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Transactions</h2>
+  <div class="row" style="margin-bottom:.5rem; align-items:center;">
+    <input id="txSearch" type="search" placeholder="Search transactions (description, category, date)" style="flex:1; padding:.5rem; border-radius:8px; border:1px solid #ddd;" />
+    <a class="button-outline" href="{{ url_for('export_csv') }}" style="margin-left:.5rem;">Export CSV</a>
+  </div>
+  {% if items %}
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th><th>Description</th><th>Category</th><th>Type</th><th style="text-align:right;">Amount</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="txTableBody">
+        {% for t in items|sort(attribute="date", reverse=True) %}
+        <tr>
+          <td>{{ t.date }}</td>
+          <td>{{ t.description }}</td>
+          <td>{{ t.category }}</td>
+          <td>{{ t.type }}</td>
+          <td style="text-align:right;">${{ '%.2f'|format(t.amount) }}</td>
+          <td>
+            <form action="{{ url_for('delete', tx_id=t.id) }}" method="POST" data-txid="{{ t.id }}">
+              <button class="danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    <p class="muted">No transactions yet. Add some income/expenses to get started.</p>
+  {% endif %}
+</section>
+
+<section class="grid-3">
+  <div class="card">
+    <h3>Monthly Net</h3>
+    <div class="chart-wrapper">
+      <canvas id="netChart"></canvas>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Income vs Expense (Monthly)</h3>
+    <div class="chart-wrapper">
+      <canvas id="barChart"></canvas>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Expenses by Category</h3>
+    <div class="chart-wrapper">
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<script>
+    window.insightsDataRaw = JSON.parse(`{{ insights | tojson | safe }}`);
+    window.txItemsRaw = JSON.parse(`{{ items | tojson | safe }}`);
+</script>
+
+
+{% endblock %}

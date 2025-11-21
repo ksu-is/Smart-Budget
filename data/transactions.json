@@ -1,0 +1,18 @@
+[
+  {
+    "id": "f1e808da-9d78-4b5c-bde3-5f28aca7a34e",
+    "date": "2025-11-20",
+    "description": "grocery",
+    "category": "grocery",
+    "type": "expense",
+    "amount": 500.0
+  },
+  {
+    "id": "92d95128-68c1-4e95-b919-0ca5eb5bdf89",
+    "date": "2025-11-20",
+    "description": "gas",
+    "category": "gas",
+    "type": "expense",
+    "amount": 56.0
+  }
+]
