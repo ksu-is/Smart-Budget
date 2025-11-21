@@ -1,4 +1,5 @@
 function confirmDelete() {
+<<<<<<< HEAD
   return confirm("Delete this transaction?");
 }
 
@@ -184,4 +185,8 @@ if (document.readyState === 'loading') {
 } else {
   initDashboard();
 }
+=======
+    return confirm("Delete this transaction?");
+  }
+>>>>>>> d28ae69fb26ffee7dab708d7fe187a9e5e0cc285
   
