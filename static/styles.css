@@ -21,5 +21,14 @@ table td, table th { white-space: nowrap; }
 .flash.ok { background: rgba(0,200,100,.12); }
 .flash.error { background: rgba(220,20,60,.12); }
 button.danger { background: #c0392b; }
-canvas { width: 100%; height: 320px; }
+/* Chart wrapper: give charts a fixed wrapper height so Chart.js has a stable
+   container to render into. Canvas fills the wrapper fully. Avoid fixing the
+   entire `.card` since it also contains headings and other content. */
+.card .chart-wrap { height: 220px; }
+@media (max-width: 900px) {
+  .card .chart-wrap { height: 180px; }
+}
+
+.card canvas { width: 100%; height: 100%; display: block; }
+
 .button-outline { border: 1px solid currentColor; padding: .6rem .9rem; border-radius: 8px; text-decoration: none; }

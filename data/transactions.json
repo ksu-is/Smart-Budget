@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "id": "ba0677d4-6ba2-4849-88cf-a9a2c0cd6678",
+    "date": "2025-11-30",
+    "description": "Salary",
+    "category": "Salary",
+    "type": "income",
+    "amount": 2000.0
+  },
+  {
+    "id": "7fb4cdfb-008d-44ca-95a5-253a18bc367d",
+    "date": "2025-11-30",
+    "description": "gas",
+    "category": "gas",
+    "type": "expense",
+    "amount": 50.0
+  },
+  {
+    "id": "2d112721-9345-49a4-af36-2949dda05bd3",
+    "date": "2025-11-30",
+    "description": "grocery",
+    "category": "grocery",
+    "type": "expense",
+    "amount": 150.0
+  },
+  {
+    "id": "e889571f-106c-4895-8596-5f2099920814",
+    "date": "2025-11-30",
+    "description": "Outing",
+    "category": "Food",
+    "type": "expense",
+    "amount": 300.0
+  },
+  {
+    "id": "a1d5e0c4-0c24-46c2-ae56-d7711e382056",
+    "date": "2025-11-30",
+    "description": "Bonus",
+    "category": "Bonus",
+    "type": "income",
+    "amount": 500.0
+  },
+  {
+    "id": "615d5a47-0153-44a9-acb0-96d58ec8ef28",
+    "date": "2025-12-06",
+    "description": "Salary",
+    "category": "Salary",
+    "type": "income",
+    "amount": 2000.0
+  }
+]

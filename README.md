@@ -1,6 +1,42 @@
 # Smart-Budget
 SmartBudget is a personal finance tracker that uses AI to help people understand and improve their spending habits. It automatically categorizes expenses, predicts future spending, and offers friendly, conversational insights instead of just numbers. Built with Python, pandas, and Flask or Streamlit.
 
+## Features
+- Automatic expense categorization
+- AI-powered spending insights and friendly tips
+- Predicts future spending and net balance
+- Visual dashboard with charts (income, expenses, categories)
+- CSV import/export
+- Simple, modern UI (Flask, Chart.js)
+- Works offline (local JSON storage)
+
+## Quickstart
+1. Clone this repo:
+   ```sh
+   git clone https://github.com/ksu-is/Smart-Budget.git
+   cd Smart-Budget/Smart-Budget
+   ```
+2. Install dependencies:
+   ```sh
+   pip install -r requirement.txt
+   ```
+3. Run the app:
+   ```sh
+   python app.py
+   ```
+4. Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
+
+## Tech Stack
+- Python 3
+- Flask
+- pandas
+- Chart.js
+- HTML/CSS/JS
+
+## Demo
+<!-- Optionally add a screenshot or GIF here -->
+
+## About
 Smart Budget — A Personal Finance Tracker with AI Insights
 
 Everyone dreams of being financially free. It’s like that moment when you breathe out after holding your breath too long. But, man, keeping track of where all your money goes every month? It’s like chasing loose papers in the wind. You try to grab one, and another flies off. That’s why I want to build SmartBudget, a simple but smart personal finance tracker that doesn’t just show numbers, it talks to you. Like a friend who actually gets your spending habits and helps you make smarter choices. Not a boring budgeting app, more like a personal money coach, powered by AI, but with a little heart.
@@ -20,4 +56,5 @@ It’s friendly. It’s gentle. It gets you. Because money shouldn’t make you 
 Realistically, this project can be done by one person (me), but I’d honestly like to work with two. One could handle front-end, one the AI logic, and together it’d shine more.
 Money can be messy, confusing, and sometimes even scary. But SmartBudget would make it feel simple, maybe even fun. It’s not just about tracking every penny; it’s about knowing your story through your spending. And maybe, just maybe, finally feeling like you’ve got your wallet and your life together again.
 
-Project – 1 person
+## License
+MIT License

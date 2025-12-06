@@ -183,7 +183,7 @@ def delete(tx_id):
     return redirect(url_for("dashboard"))
 
 
-@app.route("/export.csv", methods=["GET"])
+@app.route("/export", methods=["GET"])
 def export_csv():
     items = load_tx()
     output = io.StringIO()
